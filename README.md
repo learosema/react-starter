@@ -1,4 +1,3 @@
-# react-starter
-Simple React project setup with my personal preferences
+# Starter for new React projects
 
-Work in progress. Still missing: tests and stuff
+This is my setup for new projects using React, Babel and PostCSS. Testing is done via jest and enzyme.

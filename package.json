@@ -1,41 +1,49 @@
 {
   "name": "react-starter",
   "version": "1.0.0",
-  "description": "Simple React project setup with my personal preferences",
+  "description": "Starter for a react project",
   "main": "index.js",
+  "homepage": "https://terabaud.github.io/reat-starter/",
   "scripts": {
-    "start": "webpack-dev-server --content-base public --open --mode development",
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard",
+    "fix:lint": "standard --fix",
+    "test": "jest",
+    "start": "parcel src/index.html",
+    "clean": "rimraf dist/index.html dist/src.*.js dist/src.*.map dist/src.*.css",
+    "prebuild": "npm run lint -s && npm run test -s",
+    "build": "npm run clean -s && parcel build --public-url . src/index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b master"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/terabaud/react-starter.git"
+    "url": "git+https://github.com/terabaud/terabaud.github.io.git"
   },
-  "author": "",
+  "keywords": [],
+  "author": "Lea Rosema",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/terabaud/react-starter/issues"
-  },
-  "homepage": "https://github.com/terabaud/react-starter#readme",
-  "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "hoek": "^5.0.3",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.5",
-    "webpack-dev-server": "^3.1.4"
+    "url": "https://github.com/terabaud/terabaud.github.io/issues"
   },
   "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.2.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "gh-pages": "^1.2.0",
+    "jest": "^23.2.0",
+    "parcel-bundler": "^1.9.3",
+    "postcss-preset-env": "^5.2.1",
+    "react-test-renderer": "^16.4.1",
+    "rimraf": "^2.6.2",
+    "standard": "^11.0.1"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/enzyme.config.js"
   }
 }
